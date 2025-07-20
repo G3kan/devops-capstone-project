@@ -84,14 +84,14 @@ def get_accounts(account_id):
     """
     app.logger.info("Request to read an Account with id: %s", account_id)
 
-    # Account.find() metodunu kullanarak hesabı ID'ye göre buluyoruz
+    # Account.find() to find acount
     account = Account.find(account_id)
 
-    # Eğer hesap bulunamazsa 404 Not Found hatası döndürüyoruz
+    #if not found
     if not account:
         abort(status.HTTP_404_NOT_FOUND, f"Account with id [{account_id}] could not be found.")
 
-    # Hesabı serialize edip 200 OK durum kodu ile geri döndürüyoruz
+   #if found account 
     return account.serialize(), status.HTTP_200_OK
 
 
